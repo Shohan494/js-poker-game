@@ -112,6 +112,22 @@ function getScore()
   return score.push(tempScore);
 }
 
+
+var winnersHand;
+var winnerHandValue;
+
+function getWinner() 
+{
+	/*winnerHandValue = 
+	playerCards.reduce((max, p) => p.Value > max ? p.Value : max, playerCards[0].Value);
+  */
+ 
+ winnerHandValue = sortedPlayerCards[0].Value;
+ 
+  winnerHand = playerCards.findIndex(i => i.Value === winnerHandValue);
+  return winnerHand;
+}
+
 function topFiveCards()
 {
 	for(var i = 0; i < 8; i++)
@@ -142,8 +158,14 @@ var max = score.reduce(function(a, b) {
     return Math.max(a, b);
 });
 
-
+console.log("\n");
 console.log("Top Hand is Player: ", Math.floor(score.indexOf(max)/2) + 1);
 
 console.log("\n");
 console.log("highCardSet: ", highCardSet);
+
+getWinner();
+console.log(winnerHandValue);
+console.log(winnerHand);
+
+console.log("Winner with high card, " + winnerHandValue + ". Player: ", Math.floor(winnerHand/2) + 1);
