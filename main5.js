@@ -2,8 +2,9 @@ var playerCards = [];
 var boardCards = [];
 var winnersHand = [];
 var highCardSet = [];
-var numberOfCards = 8;
-var randomCard;
+
+var randomPlayersTable = [2,4,6,8,10,12,14,16,18]
+var playerCardsNumber = randomPlayersTable[Math.floor(Math.random()*randomPlayersTable.length)];
 var deck = [];
 var suits = ["Spades", "Hearts", "Diamonds", "Clubs"];
 var values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K","A"];
@@ -31,7 +32,7 @@ getDeck();
 console.log("Distributing Cards Among Players, Deck: ", deck.length);
 console.log("\n");
 
-for(var i = 0; i < numberOfCards; i++)
+for(var i = 0; i < playerCardsNumber; i++)
 {
   randomCard = deck[Math.floor(Math.random()*deck.length)];
   playerCards.push(randomCard);
@@ -56,7 +57,7 @@ console.log("Board Cards Distributed, Deck: ", deck.length);
 console.log("\n");
 
 var x = 0;
-for(var i = 0; i < (numberOfCards/2); i++)
+for(var i = 0; i < (playerCardsNumber/2); i++)
 {
   console.log("Player " + (i+1) + "'s Hand: " + playerCards[x].Suit + " " + playerCards[x].Value + ", " + playerCards[x+1].Suit + " " + playerCards[x+1].Value);
   x = x + 2;
@@ -106,7 +107,6 @@ function getScore()
 	var tempScore = 0;
   for (i = 0; i < 5; i++ )
   {
-  	//console.log("Score", values.indexOf(highCardSet[i].Value));
     tempScore = tempScore + values.indexOf(highCardSet[i].Value);
   }
   return score.push(tempScore);
@@ -130,7 +130,7 @@ function getWinner()
 
 function topFiveCards()
 {
-	for(var i = 0; i < 8; i++)
+	for(var i = 0; i < playerCardsNumber; i++)
 	{
 		console.log("inside top five cards loop", i);
     highCardSet.push(playerCards[i]);
