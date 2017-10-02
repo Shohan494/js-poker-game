@@ -169,3 +169,4 @@ console.log(winnerHandValue);
 console.log(winnerHand);
 
 console.log("Winner with high card, " + winnerHandValue + ". Player: ", Math.floor(winnerHand/2) + 1);
+
